@@ -7,7 +7,6 @@ public:
     subscription_ = this->create_subscription<std_msgs::msg::String>(
       "/chatter", 10, std::bind(&SubscriberNode::topic_callback, this, std::placeholders::_1));
   }
-
 private:
   void topic_callback(const std_msgs::msg::String::SharedPtr msg) const {
     RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
